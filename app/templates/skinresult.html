@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+</head>
+<body>
+    <h1>Analysis Results</h1>
+    <img src="{{ image_path.url }}" alt="Uploaded Image" style="max-width: 300px;">
+    <p><strong>Skin Condition:</strong> {{ predicted_condition }}</p>
+    <p><strong>Skin Type:</strong> {{ dominant_race }}</p>
+    <h2>Skincare Recommendations:</h2>
+    <p>{{ recommendations }}</p>
+    <a href="/skin/">Analyze Another Image</a>
+</body>
+</html>

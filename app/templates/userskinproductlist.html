@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .product-details {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+        }
+        .product-quantity {
+            font-size: 14px;
+            color: #dc3545;
+        }
+        .buy-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-list">
+            {% for i in userskin %}
+                <div class="product-card">
+                    <p class="product-name">{{i.product_name}}</p>
+                    {% if i.image %}
+                        <img src="{{i.image.url}}" alt="{{i.product_name}}">
+                    {% endif %}
+                    <p class="product-details">{{i.usage}}</p>
+                    <p class="product-details">Dosage: {{i.dosage}}</p>
+                    <p class="product-price"> ₹{{i.price}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

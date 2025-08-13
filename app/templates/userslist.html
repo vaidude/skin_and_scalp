@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>User List</title>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto mt-10">
+        <h1 class="text-2xl font-bold text-center mb-5">User List</h1>
+        
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Name</th>
+                        <th class="py-2 px-4 border-b">Email</th>
+                        <th class="py-2 px-4 border-b">Phone</th>
+                        <th class="py-2 px-4 border-b">Gender</th>
+                        <th class="py-2 px-4 border-b">Age</th>
+                        <th class="py-2 px-4 border-b">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user %}
+                    <tr class="hover:bg-gray-100">
+                        <td class="py-2 px-4 border-b">{{ user.name }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.email }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.phone }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.get_gender_display }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.age }}</td>
+
+                        <td class="py-2 px-4 border-b"> {% if user.image %}
+                            <img src="{{ user.image.url }}" alt="{{ user.name }}" class="w-16 h-16 object-cover rounded">
+                        {% else %}
+                            N/A
+                        {% endif %}</td>
+
+                            <td><a href="/deleteuser/{{user.id}}">delete</a></td>
+                            <td><a href="/adeditprofile/{{user.id}}">edit</a></td>
+                            
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4">No users found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

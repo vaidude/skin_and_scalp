@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Scalp Analysis</title>
+</head>
+<body>
+    <h1>Scalp Analysis</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="image">Upload a scalp image:</label>
+        <input type="file" name="image" id="image" required>
+        <button type="submit">Analyze</button>
+    </form>
+</body>
+</html>

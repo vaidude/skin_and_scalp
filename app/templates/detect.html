@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload with Detect Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-300 to-blue-700 min-h-screen flex items-center justify-center text-gray-800">
+
+<div class="container bg-white shadow-lg rounded-lg p-8 max-w-lg text-center">
+    <h1 class="text-2xl font-bold text-blue-600 mb-6">Scalp Detection</h1>
+    <form action="" method="post" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        <input 
+            type="file" 
+            name="img" 
+            id="imageUpload" 
+            class="block w-full text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+        <img id="imagePreview" class="rounded-lg shadow-md mx-auto mt-4 hidden" />
+        <button 
+            type="button" 
+            id="detectBtn" 
+            class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"
+        >
+            Detect
+        </button>
+    </form>
+</div>
+
+<script>
+    // Image preview function
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            var preview = document.getElementById('imagePreview');
+            preview.style.display = 'block';
+            preview.src = e.target.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Detect button functionality
+    document.getElementById('detectBtn').addEventListener('click', function() {
+        var description = document.getElementById('description').value;
+        alert("Detecting... \n" + description);  // Placeholder for detection logic
+    });
+</script>
+
+</body>
+</html>
